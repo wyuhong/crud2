@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+<!--  <package name="default" namespace="/" extends="struts-default"> -->
+    	 <package name="default" namespace="/" extends="json-default">
+    	<default-action-ref name="listStudents"/>
+    	<action name="listStudents" class="com.action.StudentAction" method="listStudents">
+    		<result name="success">/index.jsp</result>
+    	</action>
+    	<action name="removeStudent" class="com.action.StudentAction" method="removeStudent">
+    		<result name="success" type="redirectAction">listStudents</result>
+    	</action>
+    	
+    	<action name="updateStudent" class="com.action.StudentAction" method="updateStudent">
+    		<result name="success" type="redirectAction">listStudents</result>
+    	</action>
+    	
+    	<action name="toupdateStudent" class="com.action.StudentAction" method="toupdateStudent">
+			<result name="success">/update.jsp</result>
+		</action>
+		
+		<action name="saveStudent" class="com.action.StudentAction" method="saveStudent">
+    		<result name="success" type="redirectAction">listStudents</result>
+    	</action>
+    	
+    	<action name="test" class="com.action.TestAction" method="test">
+			<result name="success">welcome.jsp</result>
+			<result name="input">test.jsp</result><!-- //input 五个常量之一，一般是校验失败，返回test.jsp -->
+		</action>	
+		
+		<action name="ajaxStuName" class="com.action.TestAction" method="ajaxStuName">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>	
+    </package>
+   
+</struts>
